@@ -2,6 +2,7 @@
  Pre entrega del proyecto final para CoderHouse
 
 DESCRIPCION DEL JUEGO
+
 El objetivo del juego es pasar las diferentes habitaciones con enemigos que te atacan hasta llegar a la habitacion del Jefe final de ese nivel.
 Juego orientado a ser un roguelike, en el cual cada ronda será diferente a la anterior. 
 La muerte no es el fin sino un medio para hacerse más fuerte: antes de empezar la partida se podrá mejorar caracteristicas del personaje, arma y vestimenta.
