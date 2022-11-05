@@ -5,7 +5,7 @@ DESCRIPCION DEL JUEGO
 
 El objetivo del juego es pasar las diferentes habitaciones con enemigos que te atacan hasta llegar a la habitacion del Jefe final de ese nivel.
 Juego orientado a ser un roguelike, en el cual cada ronda será diferente a la anterior. 
-La muerte no es el fin sino un medio para hacerse más fuerte: antes de empezar la partida se podrá mejorar caracteristicas del personaje, arma y vestimenta.
+La muerte no es el fin sino un medio para hacerse más fuerte: antes de empezar la partida se podrá mejorar las caracteristicas del personaje, arma y vestimenta.
 Simple de jugar, dificil de masterizar: Mecánicas simples y fluidas que priorizan un ritmo continuo para el jugador 
 
 JUGABILIDAD
@@ -30,6 +30,7 @@ Simple pantalla de inicio de juego.
 Música de fondo mientras se juega, sacada del juego Hotline Miami, Hydrogen.(En caso de que no se escuche la música puede ser que esté muteado el audio de juego)
 Luces propias del escenario
 
+Si el enemigo es tapado por el escenario, se mostrará un sombreado que marca al enemigo.
 
 TECLAS PARA PROBAR DIFERENTES COMPORTAMIENTOS DEL PERSONAJE/JUEGO
 
@@ -42,3 +43,22 @@ G: Sube el nivel del personaje, para probar el funcionamiento de las cartas
 Space: Quita una cantidad de vida fija al personaje hasta llegar a 0.
 
 ESC: Menú de pausa del juego con sus diferentes opciones.
+
+OBSERVACIONES CON RESPECTO A LO PEDIDO EN LA ENTREGA
+
+No quise implementar animaciones ni modelos a los enemigos y al personaje, porque no quiero caer en la fácil de hacer zombies. La temática de los enemigos está en duda, lo más probable es que sean enemigos medievales.
+
+Temporizadores hay en la mayoría del juego como puede ser el cooldown de los disparos de los enemigos, otro también es el cooldown del dash del personaje, entre otros más.
+
+Utilización de cálculos vectoriales como puede ser el recorrido que hacen los enemigos para atacar al personaje y la rotación de los mismos; junto con el movimiento y rotación del personaje.
+
+No vi necesaria la implementación de un caso SWITCH por el momento.
+
+Las colisiones dentro del juego son: las paredes, los disparos del jugador como de los enemigos, y la colisión que hacen los melee enemies al chocar con el personaje.
+
+ERRORES ENCONTRADOS 
+
+Melee enemies no hacen daño al colisionar con el personaje.
+Al reiniciar el juego, no lo reinicia correctamente si no que hay que instanciar el menú y apretar el continuar, y ahí funciona correctamente.
+Cuidado con el nivel del audio de la música puede que esté un poco fuerte.
+Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.
