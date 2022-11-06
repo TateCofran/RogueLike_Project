@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,15 +10,23 @@ public class GameManager : MonoBehaviour
     public PlayerUI playerUI;
     public PlayerBehaviour playerBehaviour;
     public PlayerStats playerStats = new PlayerStats(100, 0, 100, 0, 100, 1, 100, 100, 0, 25);
-    public Enemy enemy;
+    
+    [HideInInspector] public Enemy enemy;
     
     public UIBehaviour UIInterface;
     public GameObject pauseMenuUI;
     public GameObject gameOverMenuUI;
 
-    EnemySpawn enemySpawn;
+    [HideInInspector]public float time;
 
-    public float time;
+    //prueba
+    [SerializeField] GameObject[] enemiesInCurrentRoom;
+    bool roomCleared = false;
+
+    public Transform cardSpawn;
+    [SerializeField] GameObject cardItem;
+    [HideInInspector] CardDisplay cardDisplay;
+    int maxCardDisplay = 1;
 
     void Awake()
     {
@@ -39,6 +48,16 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (roomCleared == false)
+        {
+            EnemiesRoom();
+        }
+        else
+        {
+            return;
+        }
+
+
         time += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -91,5 +110,34 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Debug.Log("You close the game");
+    }
+
+
+    public void EnemiesRoom()
+    {
+        enemiesInCurrentRoom = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (enemiesInCurrentRoom.Length <= 0)
+        {
+            Debug.Log("You cleared the room, go to the next room");
+            roomCleared = true;
+        }
+    }
+
+    public void DisplayCards()
+    {
+        var loadCards = Resources.LoadAll("Cards", typeof(CardStats));
+        foreach (var card in loadCards)
+        {
+            for (int i = 0; i < maxCardDisplay; i++)
+            {
+                int randomCard = Random.Range(0, 1);
+                CardDisplay newCard = Instantiate(cardItem, cardSpawn.position, Quaternion.identity, cardSpawn).GetComponent<CardDisplay>();
+                newCard.card = (CardStats)card;
+            }
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            gameIsPaused = true;
+        }
     }
 }

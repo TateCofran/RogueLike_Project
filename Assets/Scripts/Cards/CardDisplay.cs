@@ -32,13 +32,14 @@ public class CardDisplay : MonoBehaviour
     void DiscardCards()
     {
         isSelected = false;
-        foreach(Transform card in GameManager.gameManager.UIInterface.cardSpawn)
+        foreach(Transform card in GameManager.gameManager.cardSpawn)
         {
             Destroy(card.gameObject);
 
         }
 
         Cursor.visible = false;
+        
         GameManager.gameManager.Resume();
     }
 }

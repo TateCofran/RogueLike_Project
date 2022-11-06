@@ -119,7 +119,7 @@ public class PlayerStats
             currentExp = currentMaxExp;
             currentExp = 0;
             Level++;
-            GameManager.gameManager.UIInterface.DisplayCards();
+            GameManager.gameManager.DisplayCards();
             // LevelUpStats(Level);
 
         }
