@@ -69,4 +69,6 @@ ERRORES ENCONTRADOS
 
 IMPLEMENTACIONES NUEVAS
 
-7/11: Añadido un level manager para facilitar la vista del nivel y de los enemigos que hay en la sala.
+7/11
+-Añadido un level manager para facilitar la vista del nivel y de los enemigos que hay en la sala.
+-Añadí mensajes de finalizacion de la sala junto con triggers de cambio de sala. 
