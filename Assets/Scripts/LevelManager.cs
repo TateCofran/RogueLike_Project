@@ -5,13 +5,18 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
+    EnemySpawn enemySpawn;
 
-
-    [SerializeField] GameObject[] levels;
+    public List<GameObject> rooms = new List<GameObject>();
     [SerializeField] GameObject[] enemiesInCurrentRoom;
-    bool roomCleared = false;
+    public bool roomCleared = false;
 
     [HideInInspector] UIBehaviour UIBehaviour;
+
+    public Transform nextRoom;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject triggerDoor;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -25,7 +30,8 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
-        levels = GameObject.FindGameObjectsWithTag("Room");
+        enemySpawn = FindObjectOfType<EnemySpawn>();
+        //rooms = GameObject.FindGameObjectsWithTag("Room");
         UIBehaviour = FindObjectOfType<UIBehaviour>();
     }
 
@@ -53,5 +59,4 @@ public class LevelManager : MonoBehaviour
             roomCleared = true;
         }
     }
-
 }

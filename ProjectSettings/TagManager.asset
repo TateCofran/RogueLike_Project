@@ -8,6 +8,8 @@ TagManager:
   - Room
   - Cards
   - Enemy
+  - Loot
+  - BulletEnemy
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
