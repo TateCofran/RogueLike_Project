@@ -61,4 +61,8 @@ ERRORES ENCONTRADOS
 -Melee enemies no hacen daño al colisionar con el personaje.
 -Al reiniciar el juego, no lo reinicia correctamente si no que hay que instanciar el menú y apretar el continuar, y ahí funciona correctamente.
 -Cuidado con el nivel del audio de la música puede que esté un poco fuerte.
--Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.(Arreglado)
+-Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.(Arreglado - 5/11)
+
+IMPLEMENTACIONES NUEVAS
+
+7/11: Añadido un level manager para facilitar la vista del nivel y de los enemigos que hay en la sala.
