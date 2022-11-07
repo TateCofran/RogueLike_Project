@@ -1,6 +1,10 @@
 # RogueLike_Project
  Pre entrega del proyecto final para CoderHouse
 
+Dejo un link de google drive con el Unity Package por separado del github
+
+[Unity Package](https://drive.google.com/drive/folders/1aQILSAPhrYFZvgouzeOo0fLmLMCyv8uu)
+
 DESCRIPCION DEL JUEGO
 
 El objetivo del juego es pasar las diferentes habitaciones con enemigos que te atacan hasta llegar a la habitacion del Jefe final de ese nivel.
