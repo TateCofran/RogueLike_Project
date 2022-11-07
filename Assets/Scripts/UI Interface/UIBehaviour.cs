@@ -1,4 +1,6 @@
+using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIBehaviour : MonoBehaviour
@@ -8,10 +10,11 @@ public class UIBehaviour : MonoBehaviour
     [SerializeField] PlayerStats playerStats;
     
     [SerializeField] TextMeshProUGUI enemyCount;
-    public int enemyKills = 0;
+    [HideInInspector] public int enemyKills = 0;
     
-    [SerializeField] TextMeshProUGUI timeTxt;  
+    [SerializeField] TextMeshProUGUI timeTxt;
 
+    [SerializeField] GameObject clearedRoom;
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -20,6 +23,7 @@ public class UIBehaviour : MonoBehaviour
     private void Start()
     {
         enemyCount.text = enemyKills.ToString();
+        
     }
     void Update()
     {
@@ -32,4 +36,10 @@ public class UIBehaviour : MonoBehaviour
         enemyCount.text = enemyKills.ToString();
     }
     
+    public IEnumerator ShowText()
+    {
+        clearedRoom.SetActive(true);
+        yield return new WaitForSeconds(5);
+        clearedRoom.SetActive(false);
+    }
 }

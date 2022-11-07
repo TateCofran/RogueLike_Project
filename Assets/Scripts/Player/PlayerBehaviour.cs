@@ -6,9 +6,10 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] PlayerUI playerUI;
     Enemy enemy;
-
+    GameManager gameManager;
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         enemy = FindObjectOfType<Enemy>();
     }
     void Update()
@@ -16,44 +17,44 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerTakeDamage();
-            Debug.Log(GameManager.gameManager.playerStats.Health);
+            Debug.Log(gameManager.playerStats.Health);
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
             PlayerHeal(10);
-            Debug.Log(GameManager.gameManager.playerStats.Health);
+            Debug.Log(gameManager.playerStats.Health);
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
             PlayerGainExp(100);
-            Debug.Log(GameManager.gameManager.playerStats.Experience);
+            Debug.Log(gameManager.playerStats.Experience);
         }
-        if(GameManager.gameManager.playerStats.Energy <= GameManager.gameManager.playerStats.MaxEnergy)
+        if(gameManager.playerStats.Energy <=gameManager.playerStats.MaxEnergy)
         {
             GameManager.gameManager.playerStats.Energy += 1 * Time.deltaTime;
         }
         else
         {
-            GameManager.gameManager.playerStats.Energy = GameManager.gameManager.playerStats.MaxEnergy;
+            gameManager.playerStats.Energy = gameManager.playerStats.MaxEnergy;
         }
     }
 
     public void PlayerTakeDamage()
     {
-        GameManager.gameManager.playerStats.TakeDamage(15);
-        playerUI.SetHealth(GameManager.gameManager.playerStats.Health);
+        gameManager.playerStats.TakeDamage(15);
+        playerUI.SetHealth(gameManager.playerStats.Health);
     }
 
     public void PlayerHeal(float healing)
     {
-        GameManager.gameManager.playerStats.HealPlayer(healing);
-        playerUI.SetHealth(GameManager.gameManager.playerStats.Health);
+        gameManager.playerStats.HealPlayer(healing);
+        playerUI.SetHealth(gameManager.playerStats.Health);
     }
 
     public void PlayerGainExp(float exp)
     {
-        GameManager.gameManager.playerStats.LevelUp(exp);
-        playerUI.SetExp(GameManager.gameManager.playerStats.Experience);
+        gameManager.playerStats.LevelUp(exp);
+        playerUI.SetExp(gameManager.playerStats.Experience);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,25 +65,16 @@ public class PlayerBehaviour : MonoBehaviour
             GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
             float enemyDamage = enemy.GetComponentInParent<Enemy>().damage;
 
-            GameManager.gameManager.playerStats.Health -= enemyDamage;
-            GameManager.gameManager.playerUI.SetHealth(GameManager.gameManager.playerStats.Health);
+            gameManager.playerStats.TakeDamage(enemyDamage);
+            gameManager.playerUI.SetHealth(gameManager.playerStats.Health);
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
             GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
             float enemyDamage = enemy.GetComponentInParent<Enemy>().damage;
 
-            GameManager.gameManager.playerStats.Health -= enemyDamage;
-            GameManager.gameManager.playerUI.SetHealth(GameManager.gameManager.playerStats.Health);
-        }
-    }
-
-    private void Death()
-    {
-        if(GameManager.gameManager.playerStats.Health <= 0)
-        {
-            Destroy(gameObject);
-            Debug.Log("You are Dead");
+            gameManager.playerStats.TakeDamage(enemyDamage);
+            gameManager.playerUI.SetHealth(gameManager.playerStats.Health);
         }
     }
 }

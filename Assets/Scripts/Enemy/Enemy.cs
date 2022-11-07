@@ -13,7 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject floatingText;
     [SerializeField] GameObject dropLoot;
     [SerializeField] EnemyUI enemyUI;
-    [SerializeField] UIBehaviour UIInterface;
+    [SerializeField, HideInInspector] UIBehaviour UIInterface;
+    
     //Properties
     public float health;
     public float speed;
@@ -22,7 +23,7 @@ public class Enemy : MonoBehaviour
     public float dropExp;
 
     bool disableEnemy = false;
-    float distance;
+    protected float distance;
     protected float attackCd = 5f;
     float damageTaken;
 

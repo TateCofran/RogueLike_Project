@@ -17,10 +17,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject bullet;
 
     [SerializeField] float dashDistance;
-    int dashAmount = 3;
-    int maxDashAmount = 3;
+    [HideInInspector]public int dashAmount = 3;
+    [HideInInspector]public int maxDashAmount = 3;
+    
     float dashCd;
-    TextMeshPro dashLeft;
 
     [SerializeField] GameObject floatingText;
 

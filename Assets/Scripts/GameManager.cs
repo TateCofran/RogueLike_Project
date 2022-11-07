@@ -7,22 +7,22 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager { get; private set;}
     public static bool gameIsPaused = false;
 
+    //Player
     public PlayerUI playerUI;
     public PlayerBehaviour playerBehaviour;
     public PlayerStats playerStats = new PlayerStats(100, 0, 100, 0, 100, 1, 100, 100, 0, 25);
-    
+    [HideInInspector] public PlayerController playerController;
+
+    //Enemy
     [HideInInspector] public Enemy enemy;
     
+    //Interface
     public UIBehaviour UIInterface;
     public GameObject pauseMenuUI;
     public GameObject gameOverMenuUI;
-
     [HideInInspector]public float time;
 
-    //prueba
-    [SerializeField] GameObject[] enemiesInCurrentRoom;
-    bool roomCleared = false;
-
+    //Cards
     public Transform cardSpawn;
     [SerializeField] GameObject cardItem;
     [HideInInspector] CardDisplay cardDisplay;
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        playerController = FindObjectOfType<PlayerController>();
         UIInterface = FindObjectOfType<UIBehaviour>();
         enemy = FindObjectOfType<Enemy>();
         gameIsPaused = false;
@@ -48,16 +49,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (roomCleared == false)
-        {
-            EnemiesRoom();
-        }
-        else
-        {
-            return;
-        }
-
-
         time += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -111,19 +102,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("You close the game");
     }
-
-
-    public void EnemiesRoom()
-    {
-        enemiesInCurrentRoom = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (enemiesInCurrentRoom.Length <= 0)
-        {
-            Debug.Log("You cleared the room, go to the next room");
-            roomCleared = true;
-        }
-    }
-
     public void DisplayCards()
     {
         var loadCards = Resources.LoadAll("Cards", typeof(CardStats));

@@ -6,22 +6,29 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    GameManager gameManager;
     [SerializeField] Slider healthSlider;
     [SerializeField] Slider energySlider;
     [SerializeField] Image expFiller;
-    [SerializeField] Image abilityFiller;
 
     [SerializeField] TextMeshProUGUI level;
     [SerializeField] TextMeshProUGUI currentExp;
     [SerializeField] TextMeshProUGUI currentEnergy;
     [SerializeField] TextMeshProUGUI currentHealth;
 
+    [SerializeField] TextMeshProUGUI dashCountTxt;
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
     private void Update()
     {
-        level.text = GameManager.gameManager.playerStats.Level.ToString();
-        currentHealth.text = GameManager.gameManager.playerStats.Health + "/" + GameManager.gameManager.playerStats.MaxHealth;
-        currentEnergy.text = GameManager.gameManager.playerStats.Energy.ToString("F0") + "/" + GameManager.gameManager.playerStats.MaxEnergy;
-        currentExp.text = GameManager.gameManager.playerStats.Experience + "/" + GameManager.gameManager.playerStats.MaxExperience;
+        level.text = gameManager.playerStats.Level.ToString();
+        currentHealth.text = gameManager.playerStats.Health + "/" + gameManager.playerStats.MaxHealth;
+        currentEnergy.text = gameManager.playerStats.Energy.ToString("F0") + "/" + gameManager.playerStats.MaxEnergy;
+        currentExp.text = gameManager.playerStats.Experience + "/" + gameManager.playerStats.MaxExperience;
+        dashCountTxt.text = "Dash " + gameManager.playerController.dashAmount.ToString() + "/" + gameManager.playerController.maxDashAmount.ToString();
     }
     public void SetMaxHealth(float maxHealth)
     {
@@ -49,15 +56,6 @@ public class PlayerUI : MonoBehaviour
     }
     public void SetExp(float exp)
     {
-        expFiller.fillAmount = exp / GameManager.gameManager.playerStats.MaxExperience;
-    }
-    public void SetCooldown(float cooldown)
-    {
-        abilityFiller.gameObject.SetActive(true);
-        abilityFiller.fillAmount -= 1 / cooldown * Time.deltaTime;
-        if(abilityFiller.fillAmount == 0)
-        {
-            abilityFiller.gameObject.SetActive(false);
-        }
+        expFiller.fillAmount = exp / gameManager.playerStats.MaxExperience;
     }
 }
