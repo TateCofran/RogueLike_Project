@@ -12,4 +12,5 @@ public class CardStats : ScriptableObject
 
     [SerializeField] int value;
     [SerializeField] int weight;
+
 }

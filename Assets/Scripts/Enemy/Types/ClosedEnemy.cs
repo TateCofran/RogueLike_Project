@@ -16,7 +16,7 @@ public class ClosedEnemy : Enemy
 
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Attack)");
+            //Debug.Log("Attack)");
             gameManager.playerStats.Health -= damage;
             gameManager.playerUI.SetHealth(gameManager.playerStats.Health);
         }

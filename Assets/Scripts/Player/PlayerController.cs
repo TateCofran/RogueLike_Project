@@ -7,10 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform model;
+    [HideInInspector] private Animator animator;
     
     [SerializeField] private float speed = 5;
     [SerializeField] private float turnSpeed = 360;
-    public Vector3 input;
+    [HideInInspector] public Vector3 input;
 
     [SerializeField] Transform bulletSpawn;
     [SerializeField] Transform bulletParent;
@@ -22,8 +23,12 @@ public class PlayerController : MonoBehaviour
     
     float dashCd;
 
-    [SerializeField] GameObject floatingText;
+    //[SerializeField] GameObject floatingText;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     private void Update()
     {
         GatherInput();
@@ -62,6 +67,8 @@ public class PlayerController : MonoBehaviour
     private void GatherInput()
     {
         input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        animator.SetFloat("Vel X", Input.GetAxisRaw("Horizontal"));
+        animator.SetFloat("Vel Z", Input.GetAxisRaw("Vertical"));
     }
 
     private void Move()

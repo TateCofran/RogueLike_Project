@@ -23,7 +23,7 @@ public class RangedEnemy : Enemy
         {
             agent.isStopped = true;
             Instantiate(bullet, barrel.position, barrel.rotation);           
-            Debug.Log("Shoot");
+            //Debug.Log("Shoot");
             attackCd = 5f;
         }
         else

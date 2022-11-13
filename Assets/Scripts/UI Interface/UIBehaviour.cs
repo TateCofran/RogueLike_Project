@@ -15,6 +15,7 @@ public class UIBehaviour : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeTxt;
 
     [SerializeField] GameObject clearedRoom;
+
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();

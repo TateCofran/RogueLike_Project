@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     public List<Enemy> enemies = new List<Enemy>();
+
+
     public int currentWave;
     private int waveValue;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
@@ -16,6 +18,7 @@ public class EnemySpawn : MonoBehaviour
     private float spawnTimer;
 
     private Vector3 offset = new Vector3(0, 1, 0);
+
 
     private void Start()
     {
@@ -64,7 +67,7 @@ public class EnemySpawn : MonoBehaviour
         while(waveValue > 0)
         {
             int randomEnemyID = Random.Range(0, enemies.Count);
-            int randomEnemyCost = enemies[randomEnemyID].cost;
+            int randomEnemyCost = enemies[randomEnemyID].amount;
 
             if(waveValue - randomEnemyCost >= 0)
             {
@@ -82,11 +85,10 @@ public class EnemySpawn : MonoBehaviour
 
         
     }
-
     [System.Serializable]
     public class Enemy
     {
         public GameObject enemyPrefab;
-        public int cost;
+        public int amount;
     }
 }

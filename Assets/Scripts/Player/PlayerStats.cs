@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats 
@@ -119,8 +117,9 @@ public class PlayerStats
             currentExp = currentMaxExp;
             currentExp = 0;
             Level++;
-            GameManager.gameManager.DisplayCards();
-            // LevelUpStats(Level);
+            CardManager.instance.DrawCard();
+            //GameManager.gameManager.DisplayCards();
+            LevelUpStats(Level);
 
         }
 
@@ -131,6 +130,8 @@ public class PlayerStats
         IncreaseHealth(level);
         IncreaseEnergy(level);
         IncreaseDamage(level);
+
+        Debug.Log("Your Current stats are: " + " Health : " + MaxHealth + ", Energy: " + MaxEnergy + ", Damage: " + Damage);
     }
 
 
@@ -138,7 +139,7 @@ public class PlayerStats
     {
         MaxHealth += (Health * 0.01f) * ((100 - level) * 0.01f);
         Health = MaxHealth;
-        Debug.Log("Your current Health is " + MaxHealth);
+        
     }
     public void IncreaseEnergy(int level)
     {
@@ -148,7 +149,7 @@ public class PlayerStats
     public void IncreaseDamage(int level)
     {
         Damage += (Damage * 0.5f) * ((100 - level) * 0.01f);
-        Debug.Log("Your current Damage is " + Damage);
+
     }
     #endregion
 

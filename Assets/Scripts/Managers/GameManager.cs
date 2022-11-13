@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,11 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverMenuUI;
     [HideInInspector]public float time;
 
-    //Cards
-    public Transform cardSpawn;
-    [SerializeField] GameObject cardItem;
-    [HideInInspector] CardDisplay cardDisplay;
-    int maxCardDisplay = 1;
+
 
     void Awake()
     {
@@ -101,21 +96,5 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Debug.Log("You close the game");
-    }
-    public void DisplayCards()
-    {
-        var loadCards = Resources.LoadAll("Cards", typeof(CardStats));
-        foreach (var card in loadCards)
-        {
-            for (int i = 0; i < maxCardDisplay; i++)
-            {
-                int randomCard = Random.Range(0, 1);
-                CardDisplay newCard = Instantiate(cardItem, cardSpawn.position, Quaternion.identity, cardSpawn).GetComponent<CardDisplay>();
-                newCard.card = (CardStats)card;
-            }
-            Cursor.visible = true;
-            Time.timeScale = 0f;
-            gameIsPaused = true;
-        }
     }
 }

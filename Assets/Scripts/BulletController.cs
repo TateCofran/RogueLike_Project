@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -27,13 +25,12 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
             //health enemy
         }
-        if(other.gameObject.CompareTag ("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
-            //GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-            //float enemyDamage = enemy.GetComponentInParent<Enemy>().damage;
-            
-            //GameManager.gameManager.playerStats.Health -= enemyDamage;
-            //GameManager.gameManager.playerUI.SetHealth(GameManager.gameManager.playerStats.Health);
+            Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Wall"))
+        {
             Destroy(gameObject);
         }
     }

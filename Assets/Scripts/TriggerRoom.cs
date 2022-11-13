@@ -8,26 +8,29 @@ public class TriggerRoom : MonoBehaviour
 
     private void Awake()
     {
+        
         player = GameObject.FindGameObjectWithTag("Player");
+        
     }
     private void OnTriggerEnter(Collider other)
     {
-        other = player.GetComponent<BoxCollider>();
-        if(other != null && LevelManager.instance.roomCleared == true)
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Next Room");
-            other.transform.position = LevelManager.instance.nextRoom.position + Vector3.up;
-            LevelManager.instance.rooms.RemoveAt(0);
+            Debug.Log(gameObject.transform.parent.name);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        other = player.GetComponent<BoxCollider>();
-        if (other != null)
+        if(LevelManager.instance.roomCleared == false)
         {
-            Debug.Log("Start 2 room");
-            LevelManager.instance.roomCleared = false;
-            LevelManager.instance.rooms[0].gameObject.GetComponentInChildren<EnemySpawn>().enabled = true;
+            LevelManager.instance.doorAnim.Play("Close");
         }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log(gameObject.transform.parent.name);
+        }
+
+        //LevelManager.instance.rooms.RemoveAt(0);
+        //LevelManager.instance.CurrentRoom();
     }
 }

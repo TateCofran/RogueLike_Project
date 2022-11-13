@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,15 @@ public class LevelManager : MonoBehaviour
 
     public List<GameObject> rooms = new List<GameObject>();
     [SerializeField] GameObject[] enemiesInCurrentRoom;
+    //[SerializeField] GameObject[] triggerRooms;
     public bool roomCleared = false;
 
     [HideInInspector] UIBehaviour UIBehaviour;
 
-    public Transform nextRoom;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject triggerDoor;
+
+    public GameObject door;
+    public Animator doorAnim;
 
     void Awake()
     {
@@ -30,8 +33,8 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
+
         enemySpawn = FindObjectOfType<EnemySpawn>();
-        //rooms = GameObject.FindGameObjectsWithTag("Room");
         UIBehaviour = FindObjectOfType<UIBehaviour>();
     }
 
@@ -57,6 +60,7 @@ public class LevelManager : MonoBehaviour
         {
             StartCoroutine(UIBehaviour.ShowText());
             roomCleared = true;
+            doorAnim.Play("Open");
         }
     }
 }

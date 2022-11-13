@@ -441,8 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c783d3c5d1b8bb4e98111fb32a1c638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardStats: {fileID: 11400000, guid: fde1e98f22db03b4e8f5003e738d5fac, type: 2}
-  button: {fileID: 0}
+  card: {fileID: 11400000, guid: 19a1290bfe511274d96d30c449eef85e, type: 2}
   tittleText: {fileID: 1361102227271554262}
   descriptionText: {fileID: 1361102226848116014}
   icon: {fileID: 1361102226889592646}
@@ -541,7 +540,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 34725dade3c4a4f43be99a0a5f72a62f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

@@ -16,15 +16,17 @@ public class CardDisplay : MonoBehaviour
 
     private void Start()
     {
+
         tittleText.text = card.tittle;
         descriptionText.text = card.description;
         icon.sprite = card.icon;
     }
     public void SelectCard()
-    {      
+    {
         isSelected = true;
 
-        Debug.Log("Cards was selected");
+        Debug.Log("Cards "+ card.tittle +" was selected");
+
         DiscardCards();
 
     }
@@ -32,14 +34,15 @@ public class CardDisplay : MonoBehaviour
     void DiscardCards()
     {
         isSelected = false;
-        foreach(Transform card in GameManager.gameManager.cardSpawn)
+        foreach (Transform card in CardManager.instance.cardSlot)
         {
             Destroy(card.gameObject);
 
         }
 
         Cursor.visible = false;
-        
+
         GameManager.gameManager.Resume();
     }
+
 }

@@ -74,8 +74,8 @@ public class Enemy : MonoBehaviour
         }
         if (other.gameObject.tag == ("Player"))
         {
-            
-            damage -= gameManager.playerStats.Health;
+
+            gameManager.playerStats.Health -= damage;
             playerUI.SetHealth(gameManager.playerStats.Health);
             Debug.Log(gameManager.playerStats.Health);
         }
@@ -112,7 +112,7 @@ public class Enemy : MonoBehaviour
         if(attackCd <= 0)
         {
             agent.isStopped = true;
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
             attackCd = 2f;
         }
         else

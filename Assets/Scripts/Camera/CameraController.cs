@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] Transform player;
     [SerializeField] float smoothSpeed = 10f;
+    [SerializeField] Vector3 velocity = Vector3.zero;
     [SerializeField] Vector3 offset;
     // Start is called before the first frame update
     void Start()
@@ -14,13 +15,13 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Quaternion newRotation = Quaternion.LookRotation(player.position - transform.position);
         transform.rotation = newRotation;
 
         Vector3 desiredPosition = player.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
     }
 }
