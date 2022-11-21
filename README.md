@@ -60,15 +60,25 @@ No vi necesaria la implementación de un caso SWITCH por el momento.
 
 Las colisiones dentro del juego son: las paredes, los disparos del jugador como de los enemigos, y la colisión que hacen los melee enemies al chocar con el personaje.
 
-ERRORES ENCONTRADOS 
-
--Melee enemies no hacen daño al colisionar con el personaje.
--Al reiniciar el juego, no lo reinicia correctamente si no que hay que instanciar el menú y apretar el continuar, y ahí funciona correctamente.
--Cuidado con el nivel del audio de la música puede que esté un poco fuerte.
--Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.(Arreglado - 5/11)
-
 IMPLEMENTACIONES NUEVAS
 
 7/11
 -Añadido un level manager para facilitar la vista del nivel y de los enemigos que hay en la sala.
 -Añadí mensajes de finalizacion de la sala junto con triggers de cambio de sala. 
+
+21/11
+-Añadido modelado del personaje, animaciones al personaje y orientación del personaje.
+-Combos con el arma a melee.
+-Sistema de magia.
+-Añadido aumento de estadísticas al subir de nivel.
+
+ERRORES ENCONTRADOS 
+
+-Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.(Arreglado - 5/11)
+-Melee enemies no hacen daño al colisionar con el personaje.(Arreglado-21/11)
+-Al reiniciar el juego, no lo reinicia correctamente si no que hay que instanciar el menú y apretar el continuar, y ahí funciona correctamente.
+-Cuidado con el nivel del audio de la música puede que esté un poco fuerte.
+-Errores a la hora de atacar en las animaciones del personaje.
+-Al aparecer la interfaz de Game Over, se puede apretar el menú de pausa.
+-Error de los enemigos al moverse al jugador.
+-Errores de interfaz del personaje en la experiencia y el maná.
