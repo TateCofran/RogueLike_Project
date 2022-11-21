@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     //Player
     public PlayerUI playerUI;
     public PlayerBehaviour playerBehaviour;
-    public PlayerStats playerStats = new PlayerStats(100, 0, 100, 0, 100, 1, 100, 100, 0, 25);
+    public PlayerStats playerStats = new PlayerStats(100, 0, 100, 0, 100, 1, 100, 100, 0, 25, 15);
     [HideInInspector] public PlayerController playerController;
 
     //Enemy

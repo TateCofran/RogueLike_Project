@@ -406,7 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 144919226}
   m_Layer: 5
-  m_Name: EnergyBar
+  m_Name: ManaBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,6 +609,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &243207569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6169288679084520296, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+  m_PrefabInstance: {fileID: 3766035660071895799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &280889481
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,11 +749,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280889481}
   m_CullTransparentMesh: 1
---- !u!1 &389137281 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6169288679084520296, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
-  m_PrefabInstance: {fileID: 3766035660071895799}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &389137283 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3229881045477882075, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
@@ -2198,7 +2198,7 @@ GameObject:
   - component: {fileID: 1007644406}
   - component: {fileID: 1007644405}
   m_Layer: 5
-  m_Name: EnergyBar Overlay
+  m_Name: ManaBar Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2350,7 +2350,7 @@ GameObject:
   - component: {fileID: 1033235433}
   - component: {fileID: 1033235432}
   m_Layer: 5
-  m_Name: EnergyBar Fill Color
+  m_Name: ManaBar Fill Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3029,7 +3029,7 @@ GameObject:
   - component: {fileID: 1306183722}
   - component: {fileID: 1306183723}
   m_Layer: 5
-  m_Name: Energy Text
+  m_Name: Mana Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4073,11 +4073,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 446440334}
-  energySlider: {fileID: 2020770588}
+  manaSlider: {fileID: 2020770588}
   expFiller: {fileID: 1671098251}
   level: {fileID: 438108208}
   currentExp: {fileID: 1766897790}
-  currentEnergy: {fileID: 1306183723}
+  currentMana: {fileID: 1306183723}
   currentHealth: {fileID: 217695032}
   dashCountTxt: {fileID: 280889483}
 --- !u!1 &1762464535
@@ -4754,6 +4754,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914924810}
   m_CullTransparentMesh: 1
+--- !u!1 &1969069927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7922699955705354231, guid: 37a3ae98ef2231040873a3b9c8500356, type: 3}
+  m_PrefabInstance: {fileID: 114813084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1977864172
 GameObject:
   m_ObjectHideFlags: 0
@@ -4845,7 +4850,7 @@ GameObject:
   - component: {fileID: 2020770587}
   - component: {fileID: 2020770588}
   m_Layer: 5
-  m_Name: EnergyBar Fill
+  m_Name: ManaBar Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5105,11 +5110,11 @@ MonoBehaviour:
   rooms:
   - {fileID: 2872137085156093454}
   - {fileID: 8871326926478642409}
+  - {fileID: 1969069927}
   enemiesInCurrentRoom: []
-  roomCleared: 0
+  currentRoom: {fileID: 2872137085156093454}
   player: {fileID: 7731013066684590226}
-  door: {fileID: 389137281}
-  doorAnim: {fileID: 389137283}
+  state: 0
 --- !u!1 &2105554369
 GameObject:
   m_ObjectHideFlags: 0
@@ -5178,6 +5183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawn Room
       objectReference: {fileID: 0}
+    - target: {fileID: 2786283860790980041, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2786283860790980046, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -5222,6 +5231,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3523958334266889604, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 243207569}
+    - target: {fileID: 3523958334266889604, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: doorAnim
+      value: 
+      objectReference: {fileID: 389137283}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
@@ -5298,24 +5315,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8803973214635080238, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -8803973214635080238, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
       propertyPath: bulletParent
       value: 
       objectReference: {fileID: 1123839253}
-    - target: {fileID: 294785375, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 294785376, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.237
       objectReference: {fileID: 0}
-    - target: {fileID: 294785378, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 294785376, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.246
       objectReference: {fileID: 0}
-    - target: {fileID: 336424662, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 294785376, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.189
       objectReference: {fileID: 0}
     - target: {fileID: 293475327879478140, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
       propertyPath: m_RootOrder
@@ -5369,6 +5382,10 @@ PrefabInstance:
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1756193185}
+    - target: {fileID: 7731013066684590230, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
+      propertyPath: spellParent
+      value: 
+      objectReference: {fileID: 1123839253}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}

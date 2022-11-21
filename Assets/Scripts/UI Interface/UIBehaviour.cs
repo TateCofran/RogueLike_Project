@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIBehaviour : MonoBehaviour
@@ -8,10 +7,10 @@ public class UIBehaviour : MonoBehaviour
     GameManager gameManager;
 
     [SerializeField] PlayerStats playerStats;
-    
+
     [SerializeField] TextMeshProUGUI enemyCount;
     [HideInInspector] public int enemyKills = 0;
-    
+
     [SerializeField] TextMeshProUGUI timeTxt;
 
     [SerializeField] GameObject clearedRoom;
@@ -24,11 +23,11 @@ public class UIBehaviour : MonoBehaviour
     private void Start()
     {
         enemyCount.text = enemyKills.ToString();
-        
+
     }
     void Update()
     {
-        
+
         timeTxt.text = gameManager.time.ToString("f0");
     }
     public void KillsCount()
@@ -36,11 +35,11 @@ public class UIBehaviour : MonoBehaviour
         enemyKills++;
         enemyCount.text = enemyKills.ToString();
     }
-    
+
     public IEnumerator ShowText()
     {
         clearedRoom.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         clearedRoom.SetActive(false);
     }
 }

@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float damage;
     public float armor;
+    public float magicArmor;
     public float dropExp;
 
     bool disableEnemy = false;
@@ -72,6 +73,18 @@ public class Enemy : MonoBehaviour
             Death();
             Destroy(other.gameObject);
         }
+        if (other.gameObject.tag == ("Weapon Player"))
+        {
+            TakeDamage();
+            Death();
+
+        }
+        if (other.gameObject.tag == ("Magic Player"))
+        {
+            TakeMagicDamage();
+            Death();
+            Destroy(other.gameObject);
+        }
         if (other.gameObject.tag == ("Player"))
         {
 
@@ -92,6 +105,17 @@ public class Enemy : MonoBehaviour
             ShowFloatingText();
         }
     }
+    public void TakeMagicDamage()
+    {
+        damageTaken = gameManager.playerStats.MagicDamage - magicArmor;
+        health -= damageTaken;
+        enemyUI.SetHealth(health);
+        if (floatingText && health > 0)
+        {
+            ShowFloatingText();
+        }
+    }
+
     public void Death()
     {
         if (health <= 0f)

@@ -8,12 +8,12 @@ public class PlayerUI : MonoBehaviour
 {
     GameManager gameManager;
     [SerializeField] Slider healthSlider;
-    [SerializeField] Slider energySlider;
+    [SerializeField] Slider manaSlider;
     [SerializeField] Image expFiller;
 
     [SerializeField] TextMeshProUGUI level;
     [SerializeField] TextMeshProUGUI currentExp;
-    [SerializeField] TextMeshProUGUI currentEnergy;
+    [SerializeField] TextMeshProUGUI currentMana;
     [SerializeField] TextMeshProUGUI currentHealth;
 
     [SerializeField] TextMeshProUGUI dashCountTxt;
@@ -26,7 +26,7 @@ public class PlayerUI : MonoBehaviour
     {
         level.text = gameManager.playerStats.Level.ToString();
         currentHealth.text = gameManager.playerStats.Health + "/" + gameManager.playerStats.MaxHealth;
-        currentEnergy.text = gameManager.playerStats.Energy.ToString("F0") + "/" + gameManager.playerStats.MaxEnergy;
+        currentMana.text = gameManager.playerStats.Mana.ToString("F0") + "/" + gameManager.playerStats.MaxMana;
         currentExp.text = gameManager.playerStats.Experience + "/" + gameManager.playerStats.MaxExperience;
         dashCountTxt.text = "Dash " + gameManager.playerController.dashAmount.ToString() + "/" + gameManager.playerController.maxDashAmount.ToString();
     }
@@ -40,14 +40,14 @@ public class PlayerUI : MonoBehaviour
         healthSlider.value = health;
     }
 
-    public void SetMaxEnergy(float maxEnergy)
+    public void SetMaxMana(float maxMana)
     {
-        energySlider.maxValue = maxEnergy;
-        energySlider.value = maxEnergy;
+        manaSlider.maxValue = maxMana;
+        manaSlider.value = maxMana;
     }
-    public void SetEnergy(float energy)
+    public void SetMana(float mana)
     {
-        energySlider.value = energy;
+        manaSlider.value = mana;
     }
 
     public void SetMinLevel(float minExp)

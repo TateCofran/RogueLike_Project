@@ -5,32 +5,32 @@ using UnityEngine;
 public class TriggerRoom : MonoBehaviour
 {
     GameObject player;
-
+    EnemySpawn enemySpawn;
+    [SerializeField] public GameObject door;
+    [SerializeField] public Animator doorAnim;
     private void Awake()
     {
-        
+        doorAnim = door.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        
+        enemySpawn = FindObjectOfType<EnemySpawn>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log(gameObject.transform.parent.name);
+
+            LevelManager.instance.currentRoom = gameObject;
+            gameObject.GetComponent<EnemySpawn>().GenerateWave();
+            
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if(LevelManager.instance.roomCleared == false)
-        {
-            LevelManager.instance.doorAnim.Play("Close");
-        }
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log(gameObject.transform.parent.name);
-        }
 
-        //LevelManager.instance.rooms.RemoveAt(0);
-        //LevelManager.instance.CurrentRoom();
+            doorAnim.Play("Close");
+
+        }
     }
 }

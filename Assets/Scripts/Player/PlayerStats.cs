@@ -11,11 +11,12 @@ public class PlayerStats
     float currentMaxExp;
     int currentLvl;
 
-    float currentEnergy;
-    float currentMaxEnergy;
-    float currentMinEnergy;
+    float currentMana;
+    float currentMaxMana;
+    float currentMinMana;
 
     float currentDamage;
+    float currentMagicDamage;
   
     #region Properties
     public float Health
@@ -48,30 +49,35 @@ public class PlayerStats
         get { return currentLvl; }
         set { currentLvl = value; }
     }
-    public float Energy
+    public float Mana
     {
-        get { return currentEnergy; }
-        set { currentEnergy = value; }
+        get { return currentMana; }
+        set { currentMana = value; }
     }
-    public float MinEnergy
+    public float MinMana
     {
-        get { return currentMinEnergy; }
-        set { currentMinEnergy = value; }
+        get { return currentMinMana; }
+        set { currentMinMana = value; }
     }
-    public float MaxEnergy
+    public float MaxMana
     {
-        get { return currentMaxEnergy; }
-        set { currentMaxEnergy = value; }
+        get { return currentMaxMana; }
+        set { currentMaxMana = value; }
     }
     public float Damage
     {
         get { return currentDamage; }
         set { currentDamage = value; }
     }
+    public float MagicDamage
+    {
+        get { return currentMagicDamage; }
+        set { currentMagicDamage = value; }
+    }
     #endregion
 
     #region Constructor
-    public PlayerStats(float health, float minHealth, float maxHealth, float exp, float maxExp, int level, float energy, float maxEnergy, float minEnergy, float damage)
+    public PlayerStats(float health, float minHealth, float maxHealth, float exp, float maxExp, int level, float mana, float maxMana, float minMana, float damage, float magicDamage)
     {
         currentHealth = health;
         currentMinHealth = minHealth;
@@ -79,10 +85,11 @@ public class PlayerStats
         currentExp = exp;
         currentMaxExp = maxExp;
         currentLvl = level;
-        currentEnergy = energy;
-        currentMinEnergy = minEnergy;
-        currentMaxEnergy = maxEnergy;
+        currentMana = mana;
+        currentMinMana = minMana;
+        currentMaxMana = maxMana;
         currentDamage = damage;
+        currentMagicDamage = magicDamage;
     }
     #endregion
 
@@ -128,10 +135,10 @@ public class PlayerStats
     public void LevelUpStats(int level)
     {
         IncreaseHealth(level);
-        IncreaseEnergy(level);
+        IncreaseMana(level);
         IncreaseDamage(level);
-
-        Debug.Log("Your Current stats are: " + " Health : " + MaxHealth + ", Energy: " + MaxEnergy + ", Damage: " + Damage);
+        IncreaseMagicDamage(level);
+        Debug.Log("Your Current stats are: " + " Health : " + MaxHealth + ", Mana: " + MaxMana + ", Damage: " + Damage + ", Magic Damage: " + MagicDamage);
     }
 
 
@@ -141,15 +148,19 @@ public class PlayerStats
         Health = MaxHealth;
         
     }
-    public void IncreaseEnergy(int level)
+    public void IncreaseMana(int level)
     {
-        MaxEnergy += (Energy * 0.01f) * ((100 - level) * 0.01f);
-        Energy = MaxEnergy;
+        MaxMana += (Mana * 0.01f) * ((100 - level) * 0.01f);
+        Mana = MaxMana;
     }
     public void IncreaseDamage(int level)
     {
         Damage += (Damage * 0.5f) * ((100 - level) * 0.01f);
 
+    }
+    public void IncreaseMagicDamage(int level)
+    {
+        MagicDamage += (MagicDamage * 0.5f) * ((100 - level) * 0.01f); 
     }
     #endregion
 

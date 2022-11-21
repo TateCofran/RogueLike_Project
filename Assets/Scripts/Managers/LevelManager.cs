@@ -10,15 +10,19 @@ public class LevelManager : MonoBehaviour
 
     public List<GameObject> rooms = new List<GameObject>();
     [SerializeField] GameObject[] enemiesInCurrentRoom;
-    //[SerializeField] GameObject[] triggerRooms;
-    public bool roomCleared = false;
+
+    public GameObject currentRoom;
 
     [HideInInspector] UIBehaviour UIBehaviour;
-
+    [HideInInspector] TriggerRoom triggerRoom;
     [SerializeField] GameObject player;
+    
 
-    public GameObject door;
-    public Animator doorAnim;
+    //public GameObject door;
+    //public Animator doorAnim;
+
+    public enum State {  Fighting, Cleared }
+    public State state;
 
     void Awake()
     {
@@ -33,34 +37,53 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
-
+        currentRoom = GameObject.Find("Spawn Room");
+        
         enemySpawn = FindObjectOfType<EnemySpawn>();
         UIBehaviour = FindObjectOfType<UIBehaviour>();
+        
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        if (roomCleared == false)
+        triggerRoom = currentRoom.GetComponent<TriggerRoom>();
+        switch (state)
         {
-            EnemiesRoom();
-        }
-        else
-        {
-            return;
+            /*case State.Start:
+                enemySpawn.GenerateWave();
+                state = State.Fighting;
+                break;*/
+            case State.Fighting:           
+                triggerRoom.doorAnim.Play("Close");
+                break;
+
+            case State.Cleared:
+                StartCoroutine(UIBehaviour.ShowText());
+                triggerRoom.doorAnim.Play("Open");                   
+                break;
+
+            default:
+                break;
         }
 
+        Invoke("EnemiesRoom", 2f);
+       
     }
-
     public void EnemiesRoom()
     {
         enemiesInCurrentRoom = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (enemiesInCurrentRoom.Length <= 0)
+        if (enemiesInCurrentRoom.Length > 0)
         {
-            StartCoroutine(UIBehaviour.ShowText());
-            roomCleared = true;
-            doorAnim.Play("Open");
+            state = State.Fighting;
         }
+        else
+        {
+            state = State.Cleared;
+        }
+
     }
 }

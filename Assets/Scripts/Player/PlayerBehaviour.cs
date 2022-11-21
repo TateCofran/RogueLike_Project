@@ -29,13 +29,13 @@ public class PlayerBehaviour : MonoBehaviour
             PlayerGainExp(100);
             Debug.Log(gameManager.playerStats.Experience);
         }
-        if(gameManager.playerStats.Energy <=gameManager.playerStats.MaxEnergy)
+        if(gameManager.playerStats.Mana <=gameManager.playerStats.MaxMana)
         {
-            GameManager.gameManager.playerStats.Energy += 1 * Time.deltaTime;
+            GameManager.gameManager.playerStats.Mana += 1 * Time.deltaTime;
         }
         else
         {
-            gameManager.playerStats.Energy = gameManager.playerStats.MaxEnergy;
+            gameManager.playerStats.Mana = gameManager.playerStats.MaxMana;
         }
     }
 

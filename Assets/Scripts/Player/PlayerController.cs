@@ -1,7 +1,5 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,23 +21,49 @@ public class PlayerController : MonoBehaviour
     
     float dashCd;
 
-    //[SerializeField] GameObject floatingText;
+    [SerializeField] public bool isAttacking = false;
+    [SerializeField] public bool hasMeleeWeapon = true;
+    [SerializeField] BoxCollider swordCollider;
+    [SerializeField] GameObject sword;
 
+    [SerializeField] PlayerMagicSystem playerMagicSystem;
+    [SerializeField] PlayerCombos playerCombos;
+    
     private void Start()
     {
         animator = GetComponent<Animator>();
+        DesactivateColliderWeapon();
+        
     }
     private void Update()
     {
         GatherInput();
         Rotation();
         Look();
+        ActivateWeapon();
         dashCd += Time.deltaTime;
+        
         if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
-        }
+            if(hasMeleeWeapon == true)
+            {
+                //Attack();
+                playerCombos.Combo();
+                isAttacking = false;
+            }
+            else
+            {
+                Shoot();
+            }
 
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            playerMagicSystem.CastSpell();
+            playerMagicSystem.isCasting = false;
+        }
+        
+     
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if(dashAmount > 0)
@@ -57,6 +81,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            hasMeleeWeapon =! hasMeleeWeapon;
+        }
     }
 
     private void FixedUpdate()
@@ -103,6 +131,12 @@ public class PlayerController : MonoBehaviour
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation, bulletParent);
     }
 
+    /*public void Attack()
+    {
+        animator.SetTrigger("Attacked");
+        isAttacking = true;
+
+    }*/
     IEnumerator Dash()
     {
         transform.position += input.ToIso() * input.normalized.magnitude * dashDistance;    
@@ -110,4 +144,41 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dash, you have " + dashAmount + " left");
         yield return null;      
     }
+
+    #region Animator weapon and spell
+    //ActivateWeapon
+    void ActivateWeapon()
+    {
+        if(hasMeleeWeapon == true)
+        {
+            sword.SetActive(true);
+        }
+        else
+        {
+            sword.SetActive(false);
+        }
+    }
+    //Collider Weapons
+    void ActivateColliderWeapon()
+    {
+        if(hasMeleeWeapon == true)
+        {
+            swordCollider.enabled = true;
+        }
+    }
+    void DesactivateColliderWeapon()
+    {
+        swordCollider.enabled = false;
+    }
+
+    void ActivateSpell()
+    {
+        sword.SetActive(false);
+        Instantiate(playerMagicSystem.spellToCast, playerMagicSystem.castPoint.position, playerMagicSystem.castPoint.rotation, playerMagicSystem.spellParent);
+    }
+    void DesactivateSpell()
+    {
+        sword.SetActive(true);
+    }
+    #endregion
 }

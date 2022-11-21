@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 405499528}
   m_Layer: 0
   m_Name: spawnpoint  (3)
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 605822819}
   m_Layer: 0
   m_Name: spawnpoint  (1)
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 816084365}
   m_Layer: 0
   m_Name: 'spawnpoint '
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1430398341}
   m_Layer: 0
   m_Name: spawnpoint  (2)
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 1494550338}
   m_Layer: 0
   m_Name: spawnpoint  (5)
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 1576610496}
   m_Layer: 0
   m_Name: spawnpoint  (4)
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 1746251856}
   m_Layer: 0
   m_Name: spawnpoint  (7)
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 1883745403}
   m_Layer: 0
   m_Name: spawnpoint  (6)
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,7 +257,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1933077066}
-  - component: {fileID: 1933077067}
   m_Layer: 0
   m_Name: SpawnEnemyPoint
   m_TagString: Untagged
@@ -288,35 +287,6 @@ Transform:
   m_Father: {fileID: 7922699955705354224}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1933077067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933077065}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6465d492eb7539a439b37ce0cd697b17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies:
-  - enemyPrefab: {fileID: 8840149089586424636, guid: d8011df49cee18648a6ed0e932d2763a, type: 3}
-    amount: 0
-  - enemyPrefab: {fileID: 2295384310217014564, guid: 56c1ce554bb936249b49230921f23789, type: 3}
-    amount: 0
-  currentWave: 1
-  enemiesToSpawn: []
-  spawnLocation:
-  - {fileID: 816084365}
-  - {fileID: 605822819}
-  - {fileID: 1430398341}
-  - {fileID: 405499528}
-  - {fileID: 1576610496}
-  - {fileID: 1494550338}
-  - {fileID: 1883745403}
-  - {fileID: 1746251856}
-  waveDuration: 20
 --- !u!1 &88486782860890461
 GameObject:
   m_ObjectHideFlags: 0
@@ -4994,8 +4964,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7709957432139208068}
-  - component: {fileID: 6754367921665879348}
-  - component: {fileID: 2542597830803855022}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -5099,31 +5067,6 @@ Transform:
   m_Father: {fileID: 7922699955705354224}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6754367921665879348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450895296457485258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85e9e1965aea96942a347214706591d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &2542597830803855022
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450895296457485258}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 88.55742, y: 1, z: 90.67854}
-  m_Center: {x: 5.3598995, y: 0, z: 15.384537}
 --- !u!1 &3451942242847423317
 GameObject:
   m_ObjectHideFlags: 0
@@ -12461,6 +12404,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7922699955705354224}
+  - component: {fileID: 7682948397354189738}
+  - component: {fileID: 4283860546977204654}
+  - component: {fileID: 8600562132667862224}
   m_Layer: 0
   m_Name: T_D Door Room
   m_TagString: Room
@@ -12490,6 +12436,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7682948397354189738
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7922699955705354231}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 88.55742, y: 1.5818505, z: 90.67854}
+  m_Center: {x: 5.3599014, y: 0.29092526, z: 15.384537}
+--- !u!114 &4283860546977204654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7922699955705354231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e9e1965aea96942a347214706591d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 5834231254167005429}
+  doorAnim: {fileID: 3006217100982821702}
+--- !u!114 &8600562132667862224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7922699955705354231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6465d492eb7539a439b37ce0cd697b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - enemyPrefab: {fileID: 8840149089586424636, guid: d8011df49cee18648a6ed0e932d2763a, type: 3}
+    amount: 1
+  - enemyPrefab: {fileID: 2295384310217014564, guid: 56c1ce554bb936249b49230921f23789, type: 3}
+    amount: 2
+  currentWave: 1
+  enemiesToSpawn: []
+  spawnLocation:
+  - {fileID: 816084365}
+  - {fileID: 605822819}
+  - {fileID: 1430398341}
+  - {fileID: 405499528}
+  - {fileID: 1576610496}
+  - {fileID: 1494550338}
+  - {fileID: 1883745403}
+  - {fileID: 1746251856}
+  waveDuration: 20
 --- !u!1 &8079601341179097699
 GameObject:
   m_ObjectHideFlags: 0
@@ -14660,5 +14662,15 @@ PrefabInstance:
 --- !u!4 &426780835040051546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6885605531996221906, guid: ba054ee30a9d0bf4e91be30be4279b24, type: 3}
+  m_PrefabInstance: {fileID: 6512960801267560584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3006217100982821702 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8348149588029445070, guid: ba054ee30a9d0bf4e91be30be4279b24, type: 3}
+  m_PrefabInstance: {fileID: 6512960801267560584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5834231254167005429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 762785355618556029, guid: ba054ee30a9d0bf4e91be30be4279b24, type: 3}
   m_PrefabInstance: {fileID: 6512960801267560584}
   m_PrefabAsset: {fileID: 0}

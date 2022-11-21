@@ -18,13 +18,7 @@ public class EnemySpawn : MonoBehaviour
     private float spawnTimer;
 
     private Vector3 offset = new Vector3(0, 1, 0);
-
-
-    private void Start()
-    {
-        GenerateWave();
-        
-    }
+    
 
     void FixedUpdate()
     {
@@ -58,6 +52,7 @@ public class EnemySpawn : MonoBehaviour
 
         spawnInterval = waveDuration / enemiesToSpawn.Count;
         waveTimer = waveDuration;
+
     }
     public void GenerateEnemies()
     {
@@ -85,6 +80,8 @@ public class EnemySpawn : MonoBehaviour
 
         
     }
+
+
     [System.Serializable]
     public class Enemy
     {
