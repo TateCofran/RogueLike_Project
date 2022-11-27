@@ -72,6 +72,10 @@ IMPLEMENTACIONES NUEVAS
 -Sistema de magia.
 -Añadido aumento de estadísticas al subir de nivel.
 
+27/11
+-Añadido animación de knockback a los enemigos.
+-Correcta implementación de subida de nivel con cartas.
+
 ERRORES ENCONTRADOS 
 
 -Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.(Arreglado - 5/11)
@@ -79,6 +83,6 @@ ERRORES ENCONTRADOS
 -Al reiniciar el juego, no lo reinicia correctamente si no que hay que instanciar el menú y apretar el continuar, y ahí funciona correctamente.
 -Cuidado con el nivel del audio de la música puede que esté un poco fuerte.
 -Errores a la hora de atacar en las animaciones del personaje.
--Al aparecer la interfaz de Game Over, se puede apretar el menú de pausa.
+-Al aparecer la interfaz de Game Over, se puede apretar el menú de pausa(Arreglado 27/11).
 -Error de los enemigos al moverse al jugador.
 -Errores de interfaz del personaje en la experiencia y el maná.
