@@ -125,23 +125,9 @@ public class PlayerStats
             currentExp = 0;
             Level++;
             CardManager.instance.DrawCard();
-            //GameManager.gameManager.DisplayCards();
-            LevelUpStats(Level);
-
         }
 
     }
-
-    public void LevelUpStats(int level)
-    {
-        IncreaseHealth(level);
-        IncreaseMana(level);
-        IncreaseDamage(level);
-        IncreaseMagicDamage(level);
-        Debug.Log("Your Current stats are: " + " Health : " + MaxHealth + ", Mana: " + MaxMana + ", Damage: " + Damage + ", Magic Damage: " + MagicDamage);
-    }
-
-
     public void IncreaseHealth(int level)
     {
         MaxHealth += (Health * 0.01f) * ((100 - level) * 0.01f);

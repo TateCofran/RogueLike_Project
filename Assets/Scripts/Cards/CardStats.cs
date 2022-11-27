@@ -10,7 +10,9 @@ public class CardStats : ScriptableObject
     
     public Sprite icon;
 
-    [SerializeField] int value;
-    [SerializeField] int weight;
+    public bool isLevelDmg = false;
+    public bool isLevelMana = false;
+    public bool isLevelHp = false;
+    public bool isLevelMagicDmg = false;
 
 }

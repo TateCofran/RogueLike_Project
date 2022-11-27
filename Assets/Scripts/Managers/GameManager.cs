@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager { get; private set;}
     public static bool gameIsPaused = false;
+    public static bool gameIsOver = false;
 
     //Player
     public PlayerUI playerUI;
@@ -48,12 +49,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (gameIsPaused)
+            if (gameIsPaused && gameIsOver == false)
             {
                 Resume();
 
             }
-            else
+            else if (gameIsOver == false)
             {
                 Pause();
 
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
         {
             gameOverMenuUI.SetActive(true);
             Time.timeScale = 0f;
+            gameIsOver = true;
         }
     }
 
@@ -91,6 +93,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(1);
         
         gameOverMenuUI.SetActive(false);
+        gameIsOver = false;
+        gameIsPaused = false;
         Time.timeScale = 1f;
     }
     public void Quit()

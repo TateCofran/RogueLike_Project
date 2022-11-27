@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerCombos : MonoBehaviour
 {
-    PlayerController controller;
-
     private Animator anim;
     public int combo;
     public bool isAttacking;

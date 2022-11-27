@@ -25,8 +25,8 @@ public class PlayerUI : MonoBehaviour
     private void Update()
     {
         level.text = gameManager.playerStats.Level.ToString();
-        currentHealth.text = gameManager.playerStats.Health + "/" + gameManager.playerStats.MaxHealth;
-        currentMana.text = gameManager.playerStats.Mana.ToString("F0") + "/" + gameManager.playerStats.MaxMana;
+        currentHealth.text = gameManager.playerStats.Health.ToString("F0") + "/" + gameManager.playerStats.MaxHealth.ToString("F0");
+        currentMana.text = gameManager.playerStats.Mana.ToString("F0") + "/" + gameManager.playerStats.MaxMana.ToString("F0");
         currentExp.text = gameManager.playerStats.Experience + "/" + gameManager.playerStats.MaxExperience;
         dashCountTxt.text = "Dash " + gameManager.playerController.dashAmount.ToString() + "/" + gameManager.playerController.maxDashAmount.ToString();
     }

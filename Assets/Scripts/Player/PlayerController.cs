@@ -1,32 +1,41 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //Character
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform model;
     [HideInInspector] private Animator animator;
     
+    //Movement
     [SerializeField] private float speed = 5;
     [SerializeField] private float turnSpeed = 360;
     [HideInInspector] public Vector3 input;
 
+    //Bullet
     [SerializeField] Transform bulletSpawn;
     [SerializeField] Transform bulletParent;
     [SerializeField] GameObject bullet;
 
+    //Dash
     [SerializeField] float dashDistance;
     [HideInInspector]public int dashAmount = 3;
     [HideInInspector]public int maxDashAmount = 3;
     
     float dashCd;
 
+    //Attack
     [SerializeField] public bool isAttacking = false;
     [SerializeField] public bool hasMeleeWeapon = true;
     [SerializeField] BoxCollider swordCollider;
     [SerializeField] GameObject sword;
 
+    //Magic
     [SerializeField] PlayerMagicSystem playerMagicSystem;
+
+    //Combos
     [SerializeField] PlayerCombos playerCombos;
     
     private void Start()
@@ -45,11 +54,10 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            if(hasMeleeWeapon == true)
+            if (hasMeleeWeapon == true)
             {
-                //Attack();
                 playerCombos.Combo();
-                isAttacking = false;
+                //playerCombos.isAttacking = false;
             }
             else
             {
@@ -89,7 +97,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if(playerCombos.isAttacking == false)
+        {
+            Move();
+        }
+
     }
 
     private void GatherInput()
@@ -131,12 +143,6 @@ public class PlayerController : MonoBehaviour
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation, bulletParent);
     }
 
-    /*public void Attack()
-    {
-        animator.SetTrigger("Attacked");
-        isAttacking = true;
-
-    }*/
     IEnumerator Dash()
     {
         transform.position += input.ToIso() * input.normalized.magnitude * dashDistance;    

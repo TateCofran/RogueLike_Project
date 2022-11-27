@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject dropLoot;
     [SerializeField] EnemyUI enemyUI;
     [SerializeField, HideInInspector] UIBehaviour UIInterface;
-    
+    private Animator anim;
+
     //Properties
     public float health;
     public float speed;
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
     protected float distance;
     protected float attackCd = 5f;
     float damageTaken;
+    public float knockbackForce = 100;
 
     void Start()
     {
@@ -34,6 +36,7 @@ public class Enemy : MonoBehaviour
         playerUI = FindObjectOfType<PlayerUI>();
         player = GameObject.FindGameObjectWithTag("Player");
         gameManager = FindObjectOfType<GameManager>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -99,6 +102,13 @@ public class Enemy : MonoBehaviour
     {
         damageTaken = gameManager.playerStats.Damage - armor;
         health -= damageTaken;
+        
+        
+        transform.position -= transform.forward * knockbackForce * Time.deltaTime;
+        
+        anim.Play("Hit");
+
+
         enemyUI.SetHealth(health);
         if(floatingText && health > 0)
         {
@@ -109,11 +119,11 @@ public class Enemy : MonoBehaviour
     {
         damageTaken = gameManager.playerStats.MagicDamage - magicArmor;
         health -= damageTaken;
+
+        anim.Play("Hit");
+        
         enemyUI.SetHealth(health);
-        if (floatingText && health > 0)
-        {
-            ShowFloatingText();
-        }
+        ShowFloatingText();
     }
 
     public void Death()
@@ -149,6 +159,6 @@ public class Enemy : MonoBehaviour
     void ShowFloatingText()
     {
         GameObject points = Instantiate(floatingText, transform.position, Quaternion.identity, transform) as GameObject;
-        points.GetComponent<TextMeshPro>().text = damageTaken.ToString();
+        points.GetComponent<TextMeshPro>().text = damageTaken.ToString("f0");
     }
 }

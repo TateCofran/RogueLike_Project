@@ -16,7 +16,7 @@ public class CardDisplay : MonoBehaviour
 
     private void Start()
     {
-
+        
         tittleText.text = card.tittle;
         descriptionText.text = card.description;
         icon.sprite = card.icon;
@@ -26,7 +26,7 @@ public class CardDisplay : MonoBehaviour
         isSelected = true;
 
         Debug.Log("Cards "+ card.tittle +" was selected");
-
+        LevelStats();
         DiscardCards();
 
     }
@@ -45,4 +45,27 @@ public class CardDisplay : MonoBehaviour
         GameManager.gameManager.Resume();
     }
 
+    void LevelStats()
+    {
+        if(card.isLevelDmg == true)
+        {
+            GameManager.gameManager.playerStats.IncreaseDamage(GameManager.gameManager.playerStats.Level);
+            Debug.Log("Damage: " + GameManager.gameManager.playerStats.Damage);
+        }
+        if (card.isLevelMana == true)
+        {
+            GameManager.gameManager.playerStats.IncreaseMana(GameManager.gameManager.playerStats.Level);
+            Debug.Log("Mana: " + GameManager.gameManager.playerStats.Mana);
+        }
+        if (card.isLevelHp == true)
+        {
+            GameManager.gameManager.playerStats.IncreaseHealth(GameManager.gameManager.playerStats.Level);
+            Debug.Log("Health: " + GameManager.gameManager.playerStats.Health);
+        }
+        if (card.isLevelMagicDmg == true)
+        {
+            GameManager.gameManager.playerStats.IncreaseMagicDamage(GameManager.gameManager.playerStats.Level);
+            Debug.Log("Magic Damage: " + GameManager.gameManager.playerStats.MagicDamage);
+        }
+    }
 }

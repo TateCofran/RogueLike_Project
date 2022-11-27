@@ -5318,6 +5318,10 @@ PrefabInstance:
       propertyPath: bulletParent
       value: 
       objectReference: {fileID: 1123839253}
+    - target: {fileID: 294785375, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
+      propertyPath: m_TagString
+      value: Magic Player
+      objectReference: {fileID: 0}
     - target: {fileID: 294785376, guid: 02890af03cc26d848b18f828e97c86d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.237
