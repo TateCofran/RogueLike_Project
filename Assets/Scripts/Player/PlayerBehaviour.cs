@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -68,13 +69,6 @@ public class PlayerBehaviour : MonoBehaviour
             gameManager.playerStats.TakeDamage(enemyDamage);
             gameManager.playerUI.SetHealth(gameManager.playerStats.Health);
         }
-        /*if (other.gameObject.CompareTag("Enemy"))
-        {
-            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-            float enemyDamage = enemy.GetComponentInParent<Enemy>().damage;
-
-            gameManager.playerStats.TakeDamage(enemyDamage);
-            gameManager.playerUI.SetHealth(gameManager.playerStats.Health);
-        }*/
     }
+
 }

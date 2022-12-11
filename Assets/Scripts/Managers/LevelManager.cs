@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -13,16 +14,13 @@ public class LevelManager : MonoBehaviour
 
     public GameObject currentRoom;
 
-    [HideInInspector] UIBehaviour UIBehaviour;
+    [HideInInspector] UIBehaviour UI;
     [HideInInspector] TriggerRoom triggerRoom;
     [SerializeField] GameObject player;
-    
-
-    //public GameObject door;
-    //public Animator doorAnim;
-
-    public enum State {  Fighting, Cleared }
+    public enum State {  Fighting, Cleared, Boss }
     public State state;
+
+    public bool bossActive = false;
 
     void Awake()
     {
@@ -34,17 +32,17 @@ public class LevelManager : MonoBehaviour
         {
             instance = this;
         }
+
+
     }
     void Start()
     {
         currentRoom = GameObject.Find("Spawn Room");
         
         enemySpawn = FindObjectOfType<EnemySpawn>();
-        UIBehaviour = FindObjectOfType<UIBehaviour>();
-        
+        UI = FindObjectOfType<UIBehaviour>();
+
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -52,19 +50,16 @@ public class LevelManager : MonoBehaviour
         triggerRoom = currentRoom.GetComponent<TriggerRoom>();
         switch (state)
         {
-            /*case State.Start:
-                enemySpawn.GenerateWave();
-                state = State.Fighting;
-                break;*/
-            case State.Fighting:           
-                triggerRoom.doorAnim.Play("Close");
-                break;
 
+            case State.Fighting:
+                GameEvents.current.DoorTriggerExit(triggerRoom.id);
+                break;
             case State.Cleared:
-                StartCoroutine(UIBehaviour.ShowText());
-                triggerRoom.doorAnim.Play("Open");                   
+                GameEvents.current.DoorTriggerEnter(triggerRoom.id);
                 break;
-
+            case State.Boss:
+                BossRoom();
+                break;
             default:
                 break;
         }
@@ -76,14 +71,27 @@ public class LevelManager : MonoBehaviour
     {
         enemiesInCurrentRoom = GameObject.FindGameObjectsWithTag("Enemy");
 
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss Enemy");
+        
         if (enemiesInCurrentRoom.Length > 0)
         {
             state = State.Fighting;
         }
-        else
+        else if (enemiesInCurrentRoom.Length <= 0 && boss == false)
         {
             state = State.Cleared;
         }
+        else if(bossActive == true)
+        {
+            state = State.Boss;
+        }
+
+    }
+    public void BossRoom()
+    {
+
+            bossActive = true;
+            UI.bossEnemyUI.SetActive(true);
 
     }
 }

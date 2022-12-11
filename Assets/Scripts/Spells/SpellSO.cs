@@ -9,6 +9,7 @@ public class SpellSO : ScriptableObject
     public float speed = 15f;
     public float spellRadius = 0.5f;
     //Status effects
+
     //ui
     //time btw
     //magic elements

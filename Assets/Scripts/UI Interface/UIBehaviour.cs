@@ -1,10 +1,12 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 public class UIBehaviour : MonoBehaviour
 {
     GameManager gameManager;
+    LevelManager levelManager;
 
     [SerializeField] PlayerStats playerStats;
 
@@ -13,12 +15,13 @@ public class UIBehaviour : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI timeTxt;
 
-    [SerializeField] GameObject clearedRoom;
+    [SerializeField] public GameObject clearedRoom;
 
+    [SerializeField] public GameObject bossEnemyUI;
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-
+        levelManager = FindObjectOfType<LevelManager>();
     }
     private void Start()
     {
@@ -29,6 +32,16 @@ public class UIBehaviour : MonoBehaviour
     {
 
         timeTxt.text = gameManager.time.ToString("f0");
+        ShowText();
+        
+        if(levelManager.currentRoom == GameObject.Find("BossRoom"))
+        {
+            bossEnemyUI.SetActive(true);
+        }
+        else
+        {
+            bossEnemyUI.SetActive(false);
+        }
     }
     public void KillsCount()
     {
@@ -36,10 +49,20 @@ public class UIBehaviour : MonoBehaviour
         enemyCount.text = enemyKills.ToString();
     }
 
-    public IEnumerator ShowText()
+    public void ShowText()
     {
-        clearedRoom.SetActive(true);
-        yield return new WaitForSeconds(3);
-        clearedRoom.SetActive(false);
+        if (LevelManager.instance.state == LevelManager.State.Fighting)
+        {
+            clearedRoom.SetActive(false);
+        }
+        else if (LevelManager.instance.state == LevelManager.State.Cleared)
+        {
+            clearedRoom.SetActive(true);
+        }
+        else if(LevelManager.instance.state == LevelManager.State.Boss)
+        {
+            clearedRoom.SetActive(false);
+            bossEnemyUI.SetActive(true);
+        }
     }
 }

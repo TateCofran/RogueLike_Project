@@ -9,12 +9,13 @@ public class Enemy : MonoBehaviour
     protected GameManager gameManager;
     protected GameObject player;
     protected PlayerUI playerUI;
-    [SerializeField] protected NavMeshAgent agent;
+    
     [SerializeField] GameObject floatingText;
     [SerializeField] GameObject dropLoot;
     [SerializeField] EnemyUI enemyUI;
     [SerializeField, HideInInspector] UIBehaviour UIInterface;
-    private Animator anim;
+    
+    [HideInInspector] protected Animator anim;
 
     //Properties
     public float health;
@@ -24,42 +25,60 @@ public class Enemy : MonoBehaviour
     public float magicArmor;
     public float dropExp;
 
-    bool disableEnemy = false;
+    public bool isAlive = true;
+    //NavMesh
+    [SerializeField] protected NavMeshAgent agent;
+    protected bool disableEnemy = false;
+    bool attacked = false;
     protected float distance;
     protected float attackCd = 5f;
     float damageTaken;
     public float knockbackForce = 100;
 
+    float hitTime;
     void Start()
     {
         UIInterface = FindObjectOfType<UIBehaviour>();
         playerUI = FindObjectOfType<PlayerUI>();
         player = GameObject.FindGameObjectWithTag("Player");
         gameManager = FindObjectOfType<GameManager>();
+        
         anim = GetComponent<Animator>();
+
+        agent = GetComponent<NavMeshAgent>();
+
+        isAlive = true;
     }
 
     void Update()
     {
-        if (!disableEnemy)
+      /*  if (!disableEnemy)
         {
             RotateEnemy();
             distance = Vector3.Distance(transform.position, player.transform.position);
-            if(distance == agent.stoppingDistance)
+           
+            if(distance > agent.stoppingDistance)
             {
                 Attack();
+
             }
             else
             {
                 MoveEnemy();
             }
-        }
+        }*/
     }
+
     //Movement
-    public virtual void MoveEnemy()
+    protected virtual void MoveEnemy()
     {
-        agent.isStopped = false;
+        agent.updatePosition = true;
         agent.SetDestination(player.transform.position);
+
+        anim.SetBool("IsHitting", false);
+        //anim.SetBool("IsWalking", true);
+        //anim.SetBool("IsAttacking", false);
+
     }
 
     protected virtual void RotateEnemy()
@@ -73,19 +92,20 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == ("Bullet"))
         {
             TakeDamage();
-            Death();
+            
+            //Death();
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == ("Weapon Player"))
         {
             TakeDamage();
-            Death();
+            //Death();
 
         }
         if (other.gameObject.tag == ("Magic Player"))
         {
             TakeMagicDamage();
-            Death();
+            //Death();
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == ("Player"))
@@ -105,14 +125,17 @@ public class Enemy : MonoBehaviour
         
         
         transform.position -= transform.forward * knockbackForce * Time.deltaTime;
-        
-        anim.Play("Hit");
 
+        anim.SetBool("IsHitting", true);
+        Invoke("HitTime", 0.5f);
 
         enemyUI.SetHealth(health);
-        if(floatingText && health > 0)
+        
+        ShowFloatingText();
+        
+        if(health <= 0)
         {
-            ShowFloatingText();
+            Death();
         }
     }
     public void TakeMagicDamage()
@@ -120,41 +143,75 @@ public class Enemy : MonoBehaviour
         damageTaken = gameManager.playerStats.MagicDamage - magicArmor;
         health -= damageTaken;
 
-        anim.Play("Hit");
-        
+        anim.SetBool("IsHitting", true);
+        Invoke("HitTime", 0.5f);
+
         enemyUI.SetHealth(health);
         ShowFloatingText();
+
+        if (health <= 0)
+        {
+            Death();
+        }
     }
 
     public void Death()
     {
-        if (health <= 0f)
-        {
+        disableEnemy = true;
+        agent.updatePosition = false;
+        isAlive = false;
 
-            Destroy(gameObject);
-            Instantiate(dropLoot, transform.position, Quaternion.identity);
-            gameManager.playerBehaviour.PlayerGainExp(dropExp);
-            Debug.Log("Enemy is dead, you gain " + dropExp);
+        anim.SetTrigger("IsDead");
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        Destroy(enemyUI.healthSlider);
 
-            UIInterface.KillsCount();
-        }
+
+        Destroy(gameObject, 5f);
+
+        Instantiate(dropLoot, transform.position, Quaternion.identity);
+        gameManager.playerBehaviour.PlayerGainExp(dropExp);
+
+        UIInterface.KillsCount();
+
     }
 
+    public void HitTime()
+    {
+        anim.SetBool("IsHitting", false);
+    }
     //Attack
     protected virtual void Attack()
     {
-        if(attackCd <= 0)
+
+        if (attackCd <= 0)
         {
-            agent.isStopped = true;
-            //Debug.Log("Attack");
-            attackCd = 2f;
+            agent.updatePosition = false;
+            attacked = true;
+            AttackCooldown();
+            //attackCd = 2f;
+            //anim.SetBool("IsWalking", false);
+            //anim.SetBool("IsAttacking", true);
         }
         else
         {
-            attackCd -= Time.deltaTime;
+            attacked = false;
+            AttackCooldown();
+            //attackCd -= Time.deltaTime;
         }        
     }
 
+    protected virtual void AttackCooldown()
+    {
+        if(attacked == true)
+        {
+            float startAttackCooldown = 5;
+            startAttackCooldown = attackCd;
+        }
+        else if(attacked == false)
+        {
+            attackCd -= Time.deltaTime;
+        }
+    }
     //Show damage dealt to enemy
     void ShowFloatingText()
     {

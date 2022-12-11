@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 8092276327774305241}
-  floatingText: {fileID: 5440469540387926326, guid: edb1d5df8fde98948b5f70a285ca2e50, type: 3}
+  floatingText: {fileID: 5440469540387926326, guid: ced97caadb785a44e8793a266f2101e9, type: 3}
   dropLoot: {fileID: 5526133623103381150, guid: 2fe8eeea678ec164d867d79de1333f39, type: 3}
   enemyUI: {fileID: 816522311418510439}
   UIInterface: {fileID: 0}
@@ -621,6 +621,7 @@ MonoBehaviour:
   armor: 5
   magicArmor: 0
   dropExp: 15
+  knockbackForce: 100
 --- !u!114 &5143638624437172192
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,6 +35,7 @@ public class Spell : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
+
             //health enemy
         }
     }

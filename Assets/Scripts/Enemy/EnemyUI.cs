@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyUI : MonoBehaviour
 {
-    [SerializeField] Slider healthSlider;
+    [SerializeField] public Slider healthSlider;
 
     private void Update()
     {

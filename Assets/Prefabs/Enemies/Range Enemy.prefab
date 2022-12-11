@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: -7837033327621973001}
-  floatingText: {fileID: 5440469540387926326, guid: edb1d5df8fde98948b5f70a285ca2e50, type: 3}
+  floatingText: {fileID: 5440469540387926326, guid: c8be291e8728fe948a4bde77aa34f882, type: 3}
   dropLoot: {fileID: 5526133623103381150, guid: 2fe8eeea678ec164d867d79de1333f39, type: 3}
   enemyUI: {fileID: 2126678708620424573}
   UIInterface: {fileID: 0}
