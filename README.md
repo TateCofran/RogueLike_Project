@@ -76,6 +76,11 @@ IMPLEMENTACIONES NUEVAS
 -Añadido animación de knockback a los enemigos.
 -Correcta implementación de subida de nivel con cartas.
 
+12/12
+-Implementación de modelado para enemigos
+-Añadido animaciones para el jugador como para todos los enemigos.
+-Añadido Boss al final del nivel
+
 ERRORES ENCONTRADOS 
 
 -Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.(Arreglado - 5/11)
@@ -86,3 +91,6 @@ ERRORES ENCONTRADOS
 -Al aparecer la interfaz de Game Over, se puede apretar el menú de pausa(Arreglado 27/11).
 -Error de los enemigos al moverse al jugador.
 -Errores de interfaz del personaje en la experiencia y el maná.
+-Error en las animaciones de personajes y enemigos.
+-Error al subir varias veces de nivel con las cartas.
+-Bug al atacar con magia que el personaje se queda quieto y no te podes mover.
