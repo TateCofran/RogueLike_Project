@@ -83,13 +83,13 @@ IMPLEMENTACIONES NUEVAS
 
 ERRORES ENCONTRADOS 
 
--Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.(Arreglado - 5/11)
+-Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.(Arreglado 5/11)
 -Melee enemies no hacen daño al colisionar con el personaje.(Arreglado-21/11)
--Al reiniciar el juego, no lo reinicia correctamente si no que hay que instanciar el menú y apretar el continuar, y ahí funciona correctamente.
+-Al reiniciar el juego, no lo reinicia correctamente si no que hay que instanciar el menú y apretar el continuar, y ahí funciona correctamente.(Arreglado    14-12)
 -Cuidado con el nivel del audio de la música puede que esté un poco fuerte.
 -Errores a la hora de atacar en las animaciones del personaje.
 -Al aparecer la interfaz de Game Over, se puede apretar el menú de pausa(Arreglado 27/11).
--Error de los enemigos al moverse al jugador.
+-Error de los enemigos al moverse al jugador.(Arreglado 14/12)
 -Errores de interfaz del personaje en la experiencia y el maná.
 -Error en las animaciones de personajes y enemigos.
 -Error al subir varias veces de nivel con las cartas.
