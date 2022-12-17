@@ -37,9 +37,13 @@ public class PlayerController : MonoBehaviour
 
     //Combos
     [SerializeField] PlayerCombos playerCombos;
+
+    //Audio
+    SoundManager soundManager;
     
     private void Start()
     {
+        soundManager = FindObjectOfType<SoundManager>();
         animator = GetComponent<Animator>();
         DesactivateColliderWeapon();
         
@@ -145,7 +149,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Dash()
     {
-        transform.position += input.ToIso() * input.normalized.magnitude * dashDistance;    
+        soundManager.SelectAudio(0, 0.05f);
+        transform.position += input.ToIso() * input.normalized.magnitude * dashDistance;
         dashAmount --;
         Debug.Log("Dash, you have " + dashAmount + " left");
         yield return null;      

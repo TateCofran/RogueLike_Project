@@ -6,10 +6,12 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] PlayerUI playerUI;
+    PlayerMagicSystem magicSystem;
     Enemy enemy;
     GameManager gameManager;
     private void Start()
     {
+        magicSystem = GetComponent<PlayerMagicSystem>();
         gameManager = FindObjectOfType<GameManager>();
         enemy = FindObjectOfType<Enemy>();
     }
@@ -30,9 +32,9 @@ public class PlayerBehaviour : MonoBehaviour
             PlayerGainExp(100);
             Debug.Log(gameManager.playerStats.Experience);
         }
-        if(gameManager.playerStats.Mana <=gameManager.playerStats.MaxMana)
+        if(gameManager.playerStats.Mana < gameManager.playerStats.MaxMana)
         {
-            GameManager.gameManager.playerStats.Mana += 1 * Time.deltaTime;
+            GameManager.gameManager.playerStats.Mana += magicSystem.manaCharge * Time.deltaTime;
         }
         else
         {

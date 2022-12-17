@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
     [HideInInspector] UIBehaviour UI;
     [HideInInspector] TriggerRoom triggerRoom;
-    [SerializeField] GameObject player;
+    [SerializeField] public GameObject player;
     public enum State {  Fighting, Cleared, Boss }
     public State state;
 

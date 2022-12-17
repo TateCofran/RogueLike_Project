@@ -9,8 +9,11 @@ public class PlayerCombos : MonoBehaviour
     public bool isAttacking;
     public float delay;
 
+    SoundManager soundManager;
+
     private void Start()
     {
+        soundManager = FindObjectOfType<SoundManager>();
         anim = GetComponent<Animator>();
     }
     void StartCombo()
@@ -34,6 +37,7 @@ public class PlayerCombos : MonoBehaviour
         if (/*Input.GetMouseButtonDown(0) &&*/ !isAttacking && delay <= 5f)
         {
             isAttacking = true;
+            soundManager.SelectAudio(1, 0.05f);
             anim.SetTrigger("Attack" + combo);
         }
     }

@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public UIBehaviour UIInterface;
     public GameObject pauseMenuUI;
     public GameObject gameOverMenuUI;
+    public GameObject WinScreenMenu;
+
     [HideInInspector]public float time;
 
 
@@ -40,8 +42,12 @@ public class GameManager : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
         UIInterface = FindObjectOfType<UIBehaviour>();
         enemy = FindObjectOfType<Enemy>();
+        
         gameIsPaused = false;
+        gameIsOver = false;
         Cursor.visible = false;
+        AudioListener.volume = 1f;
+        Time.timeScale = 1f;
     }
     private void Update()
     {
@@ -64,6 +70,8 @@ public class GameManager : MonoBehaviour
         {
             gameOverMenuUI.SetActive(true);
             Time.timeScale = 0f;
+            Cursor.visible = true;
+
             gameIsOver = true;
         }
     }
@@ -71,6 +79,8 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
+        Cursor.visible = true;
+        AudioListener.volume = 0.25f;
         Time.timeScale = 0f;
         gameIsPaused = true;
     }
@@ -80,25 +90,42 @@ public class GameManager : MonoBehaviour
 
         pauseMenuUI.SetActive(false);
 
+        WinScreenMenu.SetActive(false);
+
+        Cursor.visible = false;
+        AudioListener.volume = 1f;
+
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
     public void LoadMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("Menu");
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(1);
-        
+        Time.timeScale = 1f;
+
         gameOverMenuUI.SetActive(false);
         gameIsOver = false;
         gameIsPaused = false;
-        Time.timeScale = 1f;
+        
     }
     public void Quit()
     {
         Debug.Log("You close the game");
+    }
+
+    public void WinMenu()
+    {
+        WinScreenMenu.SetActive(true);
+        Cursor.visible = true;
+        
+        AudioListener.volume = 0f;
+        
+        Time.timeScale = 0f;
+        gameIsPaused = true;
     }
 }

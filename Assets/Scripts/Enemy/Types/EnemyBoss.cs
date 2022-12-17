@@ -16,7 +16,7 @@ public class EnemyBoss : MonoBehaviour
 
     int phase;
     int attacks;
-    bool isAlive = true;
+    public bool isAlive = true;
 
     public NavMeshAgent agent;
     public Animator anim;
@@ -189,6 +189,8 @@ public class EnemyBoss : MonoBehaviour
         gameManager.playerBehaviour.PlayerGainExp(dropExp);
 
         UIInterface.KillsCount();
+
+        gameManager.WinMenu();
 
     }
     void Attack()

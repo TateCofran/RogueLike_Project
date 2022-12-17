@@ -1238,6 +1238,7 @@ MonoBehaviour:
   armor: 5
   magicArmor: 5
   dropExp: 15
+  isAlive: 1
   agent: {fileID: 7717442407720462316}
   knockbackForce: 100
   weapon: {fileID: 2262540557563280681}
@@ -1273,7 +1274,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 4.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

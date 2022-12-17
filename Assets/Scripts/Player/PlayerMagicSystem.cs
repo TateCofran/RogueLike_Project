@@ -6,12 +6,15 @@ public class PlayerMagicSystem : MonoBehaviour
 {
     private float currentCastTimer;
     public bool isCasting = false;
-
+    public float manaCharge = 2.5f;
+    
     [SerializeField] public Spell spellToCast;
     [SerializeField] public Transform castPoint;
     [SerializeField] public Transform spellParent;
+
     GameManager gameManager;
     PlayerUI playerUI;
+    
     Animator anim;
     private void Start()
     {
@@ -23,7 +26,7 @@ public class PlayerMagicSystem : MonoBehaviour
     {
         if(isCasting == false)
         {
-            if (gameManager.playerStats.Mana <= 0)
+            if (gameManager.playerStats.Mana < spellToCast.spellCast.manaCost)
             {
                 Debug.Log("No mana");
                 return;
