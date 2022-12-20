@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1408430609580f64aa5729caf52e3422, type: 3}
   m_Name: Impact Shoot
   m_EditorClassIdentifier: 
-  tittle: Impact Shoot
-  description: Gain +45% critical damage
+  tittle: More Hp
+  description: Gain +% of Hp
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   isLevelDmg: 0
   isLevelMana: 0

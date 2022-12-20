@@ -17,7 +17,7 @@ public class UIBehaviour : MonoBehaviour
 
     [SerializeField] public GameObject clearedRoom;
 
-    [SerializeField] public GameObject bossEnemyUI;
+    //[SerializeField] public GameObject bossEnemyUI;
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -34,14 +34,6 @@ public class UIBehaviour : MonoBehaviour
         timeTxt.text = gameManager.time.ToString("f0");
         ShowText();
         
-        if(levelManager.currentRoom == GameObject.Find("BossRoom"))
-        {
-            bossEnemyUI.SetActive(true);
-        }
-        else
-        {
-            bossEnemyUI.SetActive(false);
-        }
     }
     public void KillsCount()
     {
@@ -62,7 +54,6 @@ public class UIBehaviour : MonoBehaviour
         else if(LevelManager.instance.state == LevelManager.State.Boss)
         {
             clearedRoom.SetActive(false);
-            bossEnemyUI.SetActive(true);
         }
     }
 }

@@ -91,7 +91,6 @@ public class LevelManager : MonoBehaviour
     {
 
             bossActive = true;
-            UI.bossEnemyUI.SetActive(true);
 
     }
 }

@@ -26,7 +26,7 @@ public class EnemyBoss : MonoBehaviour
 
     public GameObject floatingText;
     public GameObject dropLoot;
-    BossEnemyUI ui;
+    [SerializeField] BossEnemyUI ui;
     GameManager gameManager;
     PlayerUI playerUI;
     UIBehaviour UIInterface;
@@ -37,11 +37,9 @@ public class EnemyBoss : MonoBehaviour
     private void Awake()
     {
         DesactivateColliderWeapon();
-
     }
     void Start()
     {
-        ui = FindObjectOfType<BossEnemyUI>();
         player = GameObject.FindGameObjectWithTag("Player");
         gameManager = FindObjectOfType<GameManager>();
         UIInterface = FindObjectOfType<UIBehaviour>();
@@ -58,6 +56,7 @@ public class EnemyBoss : MonoBehaviour
     {
         if(isAlive == true)
         {
+
             attackDistance = Vector3.Distance(transform.position, player.transform.position);
             Rotate();
 

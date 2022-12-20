@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public Enemy enemy;
     
     //Interface
-    public UIBehaviour UIInterface;
+    [HideInInspector] public UIBehaviour UIInterface;
     public GameObject pauseMenuUI;
     public GameObject gameOverMenuUI;
     public GameObject WinScreenMenu;
@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
             gameOverMenuUI.SetActive(true);
             Time.timeScale = 0f;
             Cursor.visible = true;
+            AudioListener.volume = 0f;
 
             gameIsOver = true;
         }
@@ -116,6 +117,7 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Debug.Log("You close the game");
+        Application.Quit();
     }
 
     public void WinMenu()
