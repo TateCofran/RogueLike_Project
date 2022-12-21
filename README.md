@@ -1,9 +1,9 @@
 # RogueLike_Project
  Pre entrega del proyecto final para CoderHouse
 
-Dejo un link de google drive con el Unity Package por separado del github
+Dejo un link de google drive con el Unity Package, junto con la build por separado del github
 
-[Unity Package](https://drive.google.com/drive/folders/1aQILSAPhrYFZvgouzeOo0fLmLMCyv8uu)
+[Google Drive](https://drive.google.com/drive/folders/1aQILSAPhrYFZvgouzeOo0fLmLMCyv8uu)
 
 DESCRIPCION DEL JUEGO
 
@@ -40,25 +40,14 @@ TECLAS PARA PROBAR DIFERENTES COMPORTAMIENTOS DEL PERSONAJE/JUEGO
 
 AWSD: Movimiento del personaje en forma isométrica.
 Shift: Dash en la direccion en la que te moves.
-Click Izquierdo del mouse: disparos del personaje.
+Click Izquierdo del mouse: ataque a melee del personaje.
+Click Derecho del mouse: ataque a distancia del personaje.
 
 F: Cura al personaja una cantidad fija de vida hasta llegar al máximo.
 G: Sube el nivel del personaje, para probar el funcionamiento de las cartas
 Space: Quita una cantidad de vida fija al personaje hasta llegar a 0.
 
 ESC: Menú de pausa del juego con sus diferentes opciones.
-
-OBSERVACIONES CON RESPECTO A LO PEDIDO EN LA ENTREGA
-
-No quise implementar animaciones ni modelos a los enemigos y al personaje, porque no quiero caer en la fácil de hacer zombies. La temática de los enemigos está en duda, lo más probable es que sean enemigos medievales.
-
-Temporizadores hay en la mayoría del juego como puede ser el cooldown de los disparos de los enemigos, otro también es el cooldown del dash del personaje, entre otros más.
-
-Utilización de cálculos vectoriales como puede ser el recorrido que hacen los enemigos para atacar al personaje y la rotación de los mismos; junto con el movimiento y rotación del personaje.
-
-No vi necesaria la implementación de un caso SWITCH por el momento.
-
-Las colisiones dentro del juego son: las paredes, los disparos del jugador como de los enemigos, y la colisión que hacen los melee enemies al chocar con el personaje.
 
 IMPLEMENTACIONES NUEVAS
 
@@ -81,16 +70,22 @@ IMPLEMENTACIONES NUEVAS
 -Añadido animaciones para el jugador como para todos los enemigos.
 -Añadido Boss al final del nivel
 
+19/12
+-Añadido URP y posprocesado.
+-Añadido Sound Manager, Event Manager y Post Processing Manager.
+-Corrección de algunos scripts.
+-Añadido un mini menú con los controles.
+
 ERRORES ENCONTRADOS 
 
 -Al momento de aparecer las cartas cuando se sube de nivel aparece, el menú de pausa. Despues funciona correctamente.(Arreglado 5/11)
 -Melee enemies no hacen daño al colisionar con el personaje.(Arreglado-21/11)
 -Al reiniciar el juego, no lo reinicia correctamente si no que hay que instanciar el menú y apretar el continuar, y ahí funciona correctamente.(Arreglado    14-12)
--Cuidado con el nivel del audio de la música puede que esté un poco fuerte.
--Errores a la hora de atacar en las animaciones del personaje.
+-Cuidado con el nivel del audio de la música puede que esté un poco fuerte.(Arreglado 19/12)
+-Errores a la hora de atacar en las animaciones del personaje.(Arreglado 19/12)
 -Al aparecer la interfaz de Game Over, se puede apretar el menú de pausa(Arreglado 27/11).
 -Error de los enemigos al moverse al jugador.(Arreglado 14/12)
--Errores de interfaz del personaje en la experiencia y el maná.
--Error en las animaciones de personajes y enemigos.
+-Errores de interfaz del personaje en la experiencia y el maná.(Arreglado 19/12)
+-Error en las animaciones de enemigos solo en la build.
 -Error al subir varias veces de nivel con las cartas.
 -Bug al atacar con magia que el personaje se queda quieto y no te podes mover.
