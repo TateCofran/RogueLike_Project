@@ -1197,9 +1197,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.026837
+  m_Height: 1.8905244
   m_Direction: 1
-  m_Center: {x: 0, y: 0.88923705, z: 0}
+  m_Center: {x: 0, y: 0.9573934, z: 0}
 --- !u!54 &7585347882798634768
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1214,7 +1214,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 1
 --- !u!114 &8220082710526661856
 MonoBehaviour:
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   enemyUI: {fileID: 5590030480657781073}
   UIInterface: {fileID: 0}
   health: 100
-  speed: 2
+  speed: 3
   damage: 15
   armor: 5
   magicArmor: 5

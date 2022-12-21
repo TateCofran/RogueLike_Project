@@ -6292,6 +6292,38 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1107011720}
     m_Modifications:
+    - target: {fileID: 597334355, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 724864459, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 951981469, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063797282, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272479690, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322675154, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579073099, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1676572383, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2786283860790980041, guid: b1ff2de6a75e6ba40abac7ac268685a8, type: 3}
       propertyPath: m_Name
       value: Spawn Room

@@ -24,7 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            PlayerHeal(10);
+            PlayerHeal(25);
             Debug.Log(gameManager.playerStats.Health);
         }
         if (Input.GetKeyDown(KeyCode.G))
@@ -34,7 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if(gameManager.playerStats.Mana < gameManager.playerStats.MaxMana)
         {
-            GameManager.gameManager.playerStats.Mana += magicSystem.manaCharge * Time.deltaTime;
+            GameManager.gameManager.playerStats.Mana += magicSystem.manaCharge * Time.deltaTime * 2;
         }
         else
         {
