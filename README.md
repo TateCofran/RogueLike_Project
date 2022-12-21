@@ -3,7 +3,7 @@
 
 Dejo un link de google drive con el Unity Package, junto con la build por separado del github
 
-[Unity Package](https://drive.google.com/drive/folders/1aQILSAPhrYFZvgouzeOo0fLmLMCyv8uu)
+[Google Drive](https://drive.google.com/drive/folders/1aQILSAPhrYFZvgouzeOo0fLmLMCyv8uu)
 
 DESCRIPCION DEL JUEGO
 
