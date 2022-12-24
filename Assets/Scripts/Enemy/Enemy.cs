@@ -50,25 +50,6 @@ public class Enemy : MonoBehaviour
         isAlive = true;
     }
 
-    void Update()
-    {
-      /*  if (!disableEnemy)
-        {
-            RotateEnemy();
-            distance = Vector3.Distance(transform.position, player.transform.position);
-           
-            if(distance > agent.stoppingDistance)
-            {
-                Attack();
-
-            }
-            else
-            {
-                MoveEnemy();
-            }
-        }*/
-    }
-
     //Movement
     protected virtual void MoveEnemy()
     {
@@ -76,8 +57,7 @@ public class Enemy : MonoBehaviour
         agent.SetDestination(player.transform.position);
 
         anim.SetBool("IsHitting", false);
-        //anim.SetBool("IsWalking", true);
-        //anim.SetBool("IsAttacking", false);
+
 
     }
 
@@ -93,19 +73,19 @@ public class Enemy : MonoBehaviour
         {
             TakeDamage();
             
-            //Death();
+
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == ("Weapon Player"))
         {
             TakeDamage();
-            //Death();
+
 
         }
         if (other.gameObject.tag == ("Magic Player"))
         {
             TakeMagicDamage();
-            //Death();
+
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == ("Player"))
@@ -188,15 +168,13 @@ public class Enemy : MonoBehaviour
             agent.updatePosition = false;
             attacked = true;
             AttackCooldown();
-            //attackCd = 2f;
-            //anim.SetBool("IsWalking", false);
-            //anim.SetBool("IsAttacking", true);
+
         }
         else
         {
             attacked = false;
             AttackCooldown();
-            //attackCd -= Time.deltaTime;
+
         }        
     }
 
